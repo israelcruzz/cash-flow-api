@@ -1,6 +1,6 @@
 # 💸 *CashFlow*
 
-![Logo do Projeto](https://github.com/israelcruzz/cash-flow-api/blob/main/thumb-cash-flow.png?raw=true) <!-- Substitua pelo link para o logo do seu projeto -->
+![Logo do Projeto][https://github.com/israelcruzz/cash-flow-api/blob/master/thumb-cash-flow.png?raw=true] <!-- Substitua pelo link para o logo do seu projeto -->
 
 ## Descrição
 
