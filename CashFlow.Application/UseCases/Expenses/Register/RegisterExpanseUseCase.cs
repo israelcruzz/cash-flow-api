@@ -1,10 +1,7 @@
-﻿using CashFlow.Communication.Requests;
+﻿using CashFlow.Communication.Enums;
+using CashFlow.Communication.Requests;
 using CashFlow.Communication.Responses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CashFlow.Exception.BasesException;
 
 namespace CashFlow.Application.UseCases.Expenses.Register
 {
@@ -12,7 +9,21 @@ namespace CashFlow.Application.UseCases.Expenses.Register
     {
         public ResponseRegisterExpanseJson Execute(RequestRegisterExpenseJson request)
         {
+            Validate(request);
+
             return new ResponseRegisterExpanseJson();
+        }
+
+        public void Validate(RequestRegisterExpenseJson request)
+        {
+            var validator = new RegisterExpanseValidator();
+            var result = validator.Validate(request);
+            if (result.IsValid == false)
+            {
+                var errorsMessage = result.Errors.Select(f => f.ErrorMessage).ToList();
+
+                throw new ErrorOnValidationException(errorsMessage);
+            }
         }
     }
 }
